@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 import backbg from "@/assets/images/web_mobile_bg.png";
 export const SwiperContainer = styled.div``;
 export const PhoneMainBox = styled.div`
@@ -88,5 +89,33 @@ export const PhoneContainerBox = styled.div`
     z-index: 1;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+`;
+// 写个动画 往下运动并且淡出
+const move = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+`;
+export const DownloadIcon = styled.div`
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 8.53333vw;
+  /* 动画是结束就从头再来 */
+  img {
+    width: 8.53333vw;
+    height: 8.53333vw;
+    animation: ${move} 1.5s linear infinite;
   }
 `;

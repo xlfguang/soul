@@ -9,6 +9,8 @@ import translationEN from "@/lang/en.json";
 import translationHK from "@/lang/hk.json";
 import translationJP from "@/lang/jp.json";
 import translationKR from "@/lang/kr.json";
+import { BrowserRouter } from "react-router-dom";
+
 i18n.use(initReactI18next).init({
   resources: {
     en: {
@@ -31,9 +33,11 @@ i18n.use(initReactI18next).init({
   },
 });
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <I18nextProvider i18n={i18n}>
-      <App />
-    </I18nextProvider>
-  </React.StrictMode>
+  <BrowserRouter>
+    <React.StrictMode>
+      <I18nextProvider i18n={i18n}>
+        <App />
+      </I18nextProvider>
+    </React.StrictMode>
+  </BrowserRouter>
 );

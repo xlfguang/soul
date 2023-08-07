@@ -1,5 +1,4 @@
 import Container from "@/components/web/Container";
-import Head from "@/components/web/Head";
 import Main from "@/components/web/Main";
 import { PCBox } from "@/style";
 import index1 from "@/assets/images/index1.png";
@@ -16,7 +15,6 @@ function Web() {
 
   return (
     <PCBox>
-      <Head></Head>
       <DisplayContainer
         top={`-${index * 100}vh`}
         setDirection={(e) => {

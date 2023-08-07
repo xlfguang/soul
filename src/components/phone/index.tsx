@@ -9,6 +9,8 @@ import index1 from "@/assets/images/index1.png";
 import index2 from "@/assets/images/index2.png";
 import index3 from "@/assets/images/index3.png";
 import index4 from "@/assets/images/index4.png";
+import downloadIcon from "@/assets/images/dow.png";
+import { DownloadIcon } from "@/style/phone";
 function Web() {
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
@@ -37,6 +39,9 @@ function Web() {
         <PhoneContainer imgSrc={index3} title={t("index3title")} />
         <PhoneContainer imgSrc={index4} title={t("index4title")} />
       </DisplayContainer>
+      <DownloadIcon>
+        <img src={downloadIcon} alt="" />
+      </DownloadIcon>
     </PhoneBox>
   );
 }
