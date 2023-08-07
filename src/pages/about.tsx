@@ -40,6 +40,15 @@ function About() {
   const [synthesisSliderShow, setSynthesisSliderShow] = useState(false);
   const [mintValue, setMintValue] = useState(0);
   const [synthesisValue, setSynthesisValue] = useState(0);
+  const [copyValue, setCopyValue] = useState("");
+  function copyToClipboard(value: string) {
+    const textArea = document.createElement("textarea");
+    textArea.value = value;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+  }
   return (
     <AboutBox>
       <BarImg src={barImg} alt="" />
@@ -187,6 +196,7 @@ function About() {
         <CardText>{t("aboutSoulText")}</CardText>
       </CardBox>
       <Modal
+        title={mintSliderShow ? t("mint") : t("synthesis")}
         isOpen={mintSliderShow || synthesisSliderShow}
         onClose={function (): void {
           setMintSliderShow(false);
@@ -222,8 +232,20 @@ function About() {
             }}
           ></Slider>
         )}
+        <MintBtn
+          style={{
+            marginTop: "20px",
+          }}
+          onClick={() => {}}
+        >
+          NEXT
+        </MintBtn>
       </Modal>
-      <InviteBtn>
+      <InviteBtn
+        onClick={() => {
+          copyToClipboard(copyValue);
+        }}
+      >
         <ImageBack>
           {[r1].map((item, i) => {
             return <img key={i} src={item} />;

@@ -50,4 +50,5 @@ export const DownloadBtn = styled.button<DownloadBtnPorps>`
   background: url(${(props) => props.imgurl}) no-repeat;
   background-size: 152px 48px;
   margin-right: 22px;
+  border: none;
 `;

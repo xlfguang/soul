@@ -3,12 +3,12 @@ import PhoneLogo from "@/assets/images/phoneLogo.png";
 import download from "@/assets/images/dw2.png";
 import Drawer from "../Drawer";
 import { useState } from "react";
-import { DrawerBOX, LangBOX, PagesBox } from "@/style";
+import { ConnectWallet, DrawerBOX, FlexBox, LangBOX, PagesBox } from "@/style";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { LanguageList, Language } from "../web/Head";
 
-function PhoneHead() {
+function PhoneHead(props: { connectWallet: () => void }) {
   const { i18n, t } = useTranslation();
   const routerList = [
     {
@@ -49,14 +49,23 @@ function PhoneHead() {
     <>
       <PhoneHeadBox>
         <img className="headlogo" src={PhoneLogo} alt="" />
-        <img
-          className="download"
-          src={download}
-          alt=""
-          onClick={() => {
-            setDrawerShow(true);
-          }}
-        />
+        <FlexBox>
+          <ConnectWallet
+            onClick={() => {
+              props.connectWallet();
+            }}
+          >
+            Connect
+          </ConnectWallet>
+          <img
+            className="download"
+            src={download}
+            alt=""
+            onClick={() => {
+              setDrawerShow(true);
+            }}
+          />
+        </FlexBox>
       </PhoneHeadBox>
       <Drawer
         isOpen={drawerShow}

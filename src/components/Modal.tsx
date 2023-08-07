@@ -5,6 +5,7 @@ interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  title?: string;
 }
 
 const ModalOverlay = styled.div`
@@ -40,9 +41,10 @@ const ModalCloseButton = styled.button`
   font-size: 18px;
   padding: 0;
   cursor: pointer;
+  border: none;
 `;
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
   if (!isOpen) {
     return null;
   }
@@ -51,6 +53,18 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     <ModalOverlay>
       <ModalContent>
         <ModalCloseButton onClick={onClose}>×</ModalCloseButton>
+        {title && (
+          <div
+            style={{
+              textAlign: "left",
+              fontSize: "20px",
+              fontWeight: "bold",
+              color: "#fff",
+            }}
+          >
+            {title}
+          </div>
+        )}
         <div
           style={{
             width: "100%",

@@ -1,4 +1,5 @@
 import {
+  ConnectWallet,
   HeadBox,
   HeadLeftBox,
   HeadRightBox,
@@ -24,7 +25,7 @@ export type LanguageList = {
   value: Language;
 }[];
 
-function Head() {
+function Head(props: { connectWallet: () => void }) {
   const { i18n, t } = useTranslation();
   const [language, setLanguage] = useState<Language>(Language.en);
   const languageList: LanguageList = [
@@ -112,9 +113,21 @@ function Head() {
               </div>
             );
           })}
+
+          <ConnectWallet
+            onClick={() => {
+              props.connectWallet();
+            }}
+          >
+            Connect Wallet
+          </ConnectWallet>
         </HeadRightBox>
       </HeadBox>
-      <PhoneHead></PhoneHead>
+      <PhoneHead
+        connectWallet={function (): void {
+          props.connectWallet();
+        }}
+      ></PhoneHead>
     </>
   );
 }

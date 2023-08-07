@@ -311,6 +311,7 @@ export const MintBtn = styled.button`
     rgb(121, 63, 238) 39%,
     rgb(84, 205, 216) 100%
   );
+  border: none;
 `;
 
 export const BtnBox = styled.div`
@@ -348,6 +349,7 @@ export const InviteBtn = styled.button`
   right: 30px;
   background: rgb(94 117 186);
   border: #25d4d0;
+  border: none;
 `;
 export const IntroductionBox = styled.div`
   width: 100vw;
@@ -477,4 +479,14 @@ export const LangBOX = styled.div`
     color: #fff;
     border-radius: 1.6vw;
   }
+`;
+export const ConnectWallet = styled.button`
+  padding: 5px 10px;
+  background-image: radial-gradient(
+    at 52% 98%,
+    rgb(121, 63, 238) 39%,
+    rgb(84, 205, 216) 100%
+  );
+  border-radius: 20px;
+  border: none;
 `;

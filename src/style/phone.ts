@@ -42,6 +42,8 @@ export const PhoneContent = styled.div`
   }
 `;
 export const PhoneDownloadBtn = styled.button<{ isabsolute: boolean }>`
+  border: none;
+
   width: 51.26667vw;
   height: 11.06667vw;
   display: block;

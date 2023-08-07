@@ -6,9 +6,10 @@ import { Route, Routes } from "react-router-dom";
 import Head from "./components/web/Head";
 
 function App() {
+  const connectWallet = () => {};
   return (
     <>
-      <Head></Head>
+      <Head connectWallet={connectWallet}></Head>
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/about" element={<About />} />
