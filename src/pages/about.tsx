@@ -65,7 +65,7 @@ function About() {
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Release Time")}</div>
-            <div className="right">2023.8.30</div>
+            <div className="right">2023.8.16</div>
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Blockchain")}</div>
