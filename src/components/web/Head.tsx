@@ -10,6 +10,7 @@ import { useState } from "react";
 import Selector from "./Selector";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
+import PhoneHead from "../phone/PhoneHead";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export enum Language {
@@ -18,7 +19,7 @@ export enum Language {
   kr = "kr",
   hk = "hk",
 }
-type LanguageList = {
+export type LanguageList = {
   name: string;
   value: Language;
 }[];
@@ -53,6 +54,10 @@ function Head() {
       name: t("index"),
     },
     {
+      path: "/introduction",
+      name: "introduction",
+    },
+    {
       path: "/about",
       name: t("about"),
     },
@@ -64,50 +69,53 @@ function Head() {
   // 获取当前路由路径 来给.link 加上activeLink 的类名
 
   return (
-    <HeadBox>
-      <HeadLeftBox>
-        <Logo src={logo} />
-        <Selector
-          value={language}
-          text={
-            languageList.find((item) => {
-              return item.value === language;
-            })?.name || ""
-          }
-        >
-          {languageList.map((item, index) => {
+    <>
+      <HeadBox>
+        <HeadLeftBox>
+          <Logo src={logo} />
+          <Selector
+            value={language}
+            text={
+              languageList.find((item) => {
+                return item.value === language;
+              })?.name || ""
+            }
+          >
+            {languageList.map((item, index) => {
+              return (
+                <SelectorItem
+                  key={index}
+                  onClick={() => {
+                    setLanguage(item.value);
+                    changeLanguage(item.value);
+                  }}
+                >
+                  {item.name}
+                </SelectorItem>
+              );
+            })}
+          </Selector>
+        </HeadLeftBox>
+        <HeadRightBox>
+          {routerList.map((item, index) => {
             return (
-              <SelectorItem
+              <div
                 key={index}
+                className={
+                  location.pathname === item.path ? "link activeLink" : "link"
+                }
                 onClick={() => {
-                  setLanguage(item.value);
-                  changeLanguage(item.value);
+                  navigate(item.path);
                 }}
               >
                 {item.name}
-              </SelectorItem>
+              </div>
             );
           })}
-        </Selector>
-      </HeadLeftBox>
-      <HeadRightBox>
-        {routerList.map((item, index) => {
-          return (
-            <div
-              key={index}
-              className={
-                location.pathname === item.path ? "link activeLink" : "link"
-              }
-              onClick={() => {
-                navigate(item.path);
-              }}
-            >
-              {item.name}
-            </div>
-          );
-        })}
-      </HeadRightBox>
-    </HeadBox>
+        </HeadRightBox>
+      </HeadBox>
+      <PhoneHead></PhoneHead>
+    </>
   );
 }
 

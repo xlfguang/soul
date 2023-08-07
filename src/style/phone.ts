@@ -119,3 +119,29 @@ export const DownloadIcon = styled.div`
     animation: ${move} 1.5s linear infinite;
   }
 `;
+export const PhoneHeadBox = styled.div`
+  height: 16.8vw;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 4.26667vw;
+  background: rgba(22, 18, 64, 0.8);
+  z-index: 100;
+  .headlogo {
+    width: 12.8vw;
+    height: 8.53333vw;
+  }
+  .download {
+    width: 8.53333vw;
+    height: 8.53333vw;
+    margin-right: 17px;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;

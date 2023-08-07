@@ -1,5 +1,6 @@
 import {
   AboutBox,
+  BarImg,
   BtnBox,
   BtnItem,
   CardBox,
@@ -7,8 +8,10 @@ import {
   CardListBox,
   CardText,
   CardTitle,
+  BtnFlex,
   ImageBack,
   MintBtn,
+  InviteBtn,
 } from "@/style";
 import { useTranslation } from "react-i18next";
 import ur from "@/assets/images/ur.jpg";
@@ -24,19 +27,23 @@ import r3 from "@/assets/images/r3.png";
 import r4 from "@/assets/images/r4.png";
 import r5 from "@/assets/images/r5.png";
 import r6 from "@/assets/images/r6.png";
+import barImg from "@/assets/images/WechatIMG70.png";
 import ProgressBar from "@/components/ProgressBar";
+import { useState } from "react";
+import Slider from "@/components/Slider";
+import Modal from "@/components/Modal";
 
-function about() {
+function About() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
-  // const Cardlist = [
-  //   {
-  //     leftText: "",
-  //   },
-  // ];
-
+  const [mintSliderShow, setMintSliderShow] = useState(false);
+  const [synthesisSliderShow, setSynthesisSliderShow] = useState(false);
+  const [mintValue, setMintValue] = useState(0);
+  const [synthesisValue, setSynthesisValue] = useState(0);
   return (
     <AboutBox>
+      <BarImg src={barImg} alt="" />
+
       <CardListBox>
         <CardBox>
           <ImageBack>
@@ -113,14 +120,42 @@ function about() {
       <BtnBox>
         <BtnItem>
           <ProgressBar value={10} maxValue={100}></ProgressBar>
-          <MintBtn>Mint</MintBtn>
+          <BtnFlex>
+            <MintBtn
+              onClick={() => {
+                if (!mintSliderShow) {
+                  setMintSliderShow(true);
+                }
+              }}
+            >
+              Mint
+            </MintBtn>
+          </BtnFlex>
         </BtnItem>
         <BtnItem>
           <ProgressBar value={80} maxValue={100}></ProgressBar>
-          <MintBtn>{t("synthesis")}</MintBtn>
+          <BtnFlex>
+            <MintBtn
+              onClick={() => {
+                if (!synthesisSliderShow) {
+                  setSynthesisSliderShow(true);
+                }
+              }}
+            >
+              {t("synthesis")}
+            </MintBtn>
+          </BtnFlex>
         </BtnItem>
       </BtnBox>
-
+      <CardBox
+        style={{
+          margin: " 20px auto",
+          background: "rgba(0,0,0,0)",
+        }}
+      >
+        <CardTitle>{t("mint Notice")}</CardTitle>
+        <CardText>{t("mint1")}</CardText>
+      </CardBox>
       <CardBox
         style={{
           margin: " 20px auto",
@@ -140,6 +175,7 @@ function about() {
         <CardText>{t("Possession1")}</CardText>
         <CardText>{t("Possession2")}</CardText>
         <CardText>{t("Possession3")}</CardText>
+        <CardText>{t("Possession4")}</CardText>
       </CardBox>
       <CardBox
         style={{
@@ -150,8 +186,53 @@ function about() {
         <CardTitle>{t("aboutSoul")}</CardTitle>
         <CardText>{t("aboutSoulText")}</CardText>
       </CardBox>
+      <Modal
+        isOpen={mintSliderShow || synthesisSliderShow}
+        onClose={function (): void {
+          setMintSliderShow(false);
+          setSynthesisSliderShow(false);
+        }}
+      >
+        <div
+          style={{
+            textAlign: "left",
+          }}
+        >
+          Number
+        </div>
+        {mintSliderShow && (
+          <Slider
+            min={1}
+            max={50}
+            step={1}
+            initialValue={mintValue}
+            onChange={(e) => {
+              setMintValue(e);
+            }}
+          ></Slider>
+        )}
+        {synthesisSliderShow && (
+          <Slider
+            max={10}
+            min={0}
+            step={1}
+            initialValue={synthesisValue}
+            onChange={(e) => {
+              setSynthesisValue(e);
+            }}
+          ></Slider>
+        )}
+      </Modal>
+      <InviteBtn>
+        <ImageBack>
+          {[r1].map((item, i) => {
+            return <img key={i} src={item} />;
+          })}
+        </ImageBack>
+        {t("invite")}
+      </InviteBtn>
     </AboutBox>
   );
 }
 
-export default about;
+export default About;

@@ -40,11 +40,20 @@ export const HeadBox = styled.header`
   z-index: 2;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const FlexBox = styled.div`
   display: flex;
   align-items: center;
+`;
+export const BtnFlex = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: center;
 `;
 export const ContainerBox = styled.div`
   width: 100vw;
@@ -222,6 +231,9 @@ export const AboutBox = styled.div`
   display: block;
   background-image: radial-gradient(at 52% 98%, #1b1758 39%, #17162d 100%);
   padding-top: 100px;
+  @media (max-width: 768px) {
+    padding-top: 50px;
+  }
 `;
 
 export const CardListBox = styled.div`
@@ -299,7 +311,6 @@ export const MintBtn = styled.button`
     rgb(121, 63, 238) 39%,
     rgb(84, 205, 216) 100%
   );
-  margin-top: 10px;
 `;
 
 export const BtnBox = styled.div`
@@ -314,9 +325,156 @@ export const BtnBox = styled.div`
 `;
 export const BtnItem = styled.div`
   width: 40%;
+  margin-top: 20px;
   @media (max-width: 768px) {
     width: 100%;
     margin-top: 10px;
     padding: 0 10px;
+  }
+`;
+export const BarImg = styled.img`
+  width: 100%;
+  max-width: 1130px;
+  margin: 20px auto;
+`;
+export const InviteBtn = styled.button`
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  text-align: center;
+  position: fixed;
+  padding: 0;
+  bottom: 30px;
+  right: 30px;
+  background: rgb(94 117 186);
+  border: #25d4d0;
+`;
+export const IntroductionBox = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  background-image: radial-gradient(at 52% 98%, #1b1758 39%, #17162d 100%);
+  overflow: hidden;
+  h2 {
+    margin-top: 100px;
+    font-size: 50px;
+    color: #fff;
+    letter-spacing: 0.1px;
+    margin-bottom: 32px;
+    line-height: 70px;
+  }
+  p {
+    font-size: 16px;
+    color: #fff;
+    line-height: 28px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+`;
+export const IntroductionContainer = styled.div`
+  max-width: 1040px;
+  width: 100%;
+  margin: auto;
+`;
+export const AboutImgBox = styled.div`
+  margin: auto;
+  max-width: 1040px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+`;
+interface AboutImgItemPorps {
+  centent: string;
+  img: string;
+}
+export const AboutImgItem = styled.div<AboutImgItemPorps>`
+  background: url(${(props) => props.img});
+  width: 162px;
+  height: 310px;
+  margin-bottom: -8px;
+  background-repeat: no-repeat;
+  background-size: 162px 310px;
+  position: relative;
+  &:after {
+    content: "${(props) => props.centent}";
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 25px;
+    white-space: nowrap;
+  }
+`;
+export const AboutImgItemTow = styled.div<AboutImgItemPorps>`
+  background: url(${(props) => props.img});
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  background-repeat: no-repeat;
+  background-size: 100px;
+  position: relative;
+  &:after {
+    content: "${(props) => props.centent}";
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    text-align: center;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 25px;
+    white-space: nowrap;
+  }
+`;
+export const TWbox = styled.footer`
+  margin: 210px auto 60px;
+  p {
+    text-align: center;
+  }
+  span {
+    margin: 0 10px;
+  }
+  a {
+    color: #fff;
+  }
+`;
+export const DrawerBOX = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+export const PagesBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-top: 26.66667vw;
+  padding-left: 8vw;
+  font-size: 4.8vw;
+  div {
+    margin-bottom: 10.66667vw;
+    text-align: left;
+  }
+`;
+export const LangBOX = styled.div`
+  padding: 4.26667vw;
+  display: flex;
+  flex-direction: column;
+  .langs {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-left: 3.73333vw;
+    height: 10.66667vw;
+    margin-bottom: 2.13333vw;
+    font-size: 3.73333vw;
+    line-height: 4.26667vw;
+    color: #fff;
+    border-radius: 1.6vw;
   }
 `;
