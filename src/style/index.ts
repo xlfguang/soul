@@ -231,7 +231,9 @@ export const AboutBox = styled.div`
   min-height: 100vh;
   display: block;
   background-image: radial-gradient(at 52% 98%, #1b1758 39%, #17162d 100%);
+  overflow: hidden;
   padding-top: 100px;
+  padding-bottom: 150px;
   @media (max-width: 768px) {
     padding-top: 50px;
   }

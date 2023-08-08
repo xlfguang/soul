@@ -18,6 +18,7 @@ import about2 from "@/assets/images/2.png";
 import about3 from "@/assets/images/3.png";
 import about4 from "@/assets/images/4.png";
 import about5 from "@/assets/images/5.png";
+import { Link } from "react-router-dom";
 function Introduction() {
   const { t } = useTranslation();
   return (
@@ -50,13 +51,17 @@ function Introduction() {
               Twitter
             </a>
             <span>|</span>
-            <a href="/agreemen" target="_black">
+
+            <Link to={"/agreemen"} target="_blank">
+              {" "}
               {t("Terms of Use ")}
-            </a>
+            </Link>
             <span>|</span>
-            <a href="/policy" target="_black">
+
+            <Link to={"/policy"} target="_blank">
+              {" "}
               {t("Privacy Policy")}
-            </a>
+            </Link>
           </p>
           <p>@SoulApp</p>
         </TWbox>
