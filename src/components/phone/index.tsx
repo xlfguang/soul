@@ -17,7 +17,7 @@ function Web() {
 
   return (
     <PhoneBox>
-      <PhoneHead></PhoneHead>
+      <PhoneHead connectWallet={() => {}}></PhoneHead>
       <DisplayContainer
         top={`-${index * 100}vh`}
         setDirection={(e) => {
