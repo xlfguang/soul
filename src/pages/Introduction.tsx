@@ -50,11 +50,11 @@ function Introduction() {
               Twitter
             </a>
             <span>|</span>
-            <a href="" target="_black">
+            <a href="/agreemen" target="_black">
               {t("Terms of Use ")}
             </a>
             <span>|</span>
-            <a href="" target="_black">
+            <a href="/policy" target="_black">
               {t("Privacy Policy")}
             </a>
           </p>

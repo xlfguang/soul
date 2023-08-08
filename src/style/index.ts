@@ -154,6 +154,7 @@ export const HeadRightBox = styled.div`
     position: relative;
     margin: 0 9px;
     padding: 0 14px;
+    cursor: pointer;
   }
   .activeLink {
     opacity: 1;
@@ -271,6 +272,9 @@ export const CardItem = styled.div`
   justify-content: space-between;
   .right {
     color: #25d4d0;
+  }
+  .left {
+    color: #fff;
   }
 `;
 export const CardTitle = styled.div`

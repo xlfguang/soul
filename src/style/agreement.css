@@ -1,0 +1,105 @@
+.ar {
+    font-family: inherit !important;
+    text-decoration: none !important;
+    color: inherit !important;
+    background-color: inherit !important
+}
+
+.layout {
+    width: 100%;
+    padding: 4vw;
+    color: var(--text_regular);
+    background: var(--bg_default)
+}
+
+.layout header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: space-evenly;
+    -webkit-justify-content: space-evenly;
+    -ms-flex-pack: space-evenly;
+    justify-content: space-evenly;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    height: 14.93333vw;
+    padding: 0 13.6vw
+}
+
+.layout header>div {
+    font-weight: 500;
+    font-size: 3.73333vw;
+    color: var(--text_hint)
+}
+
+.layout header>div.active {
+    position: relative;
+    font-weight: 700;
+    color: var(--text_default)
+}
+
+.layout header>div.active:after {
+    position: absolute;
+    bottom: -1.6vw;
+    left: 50%;
+    width: 6.4vw;
+    height: .8vw;
+    border-radius: .4vw;
+    background: var(--bg_primary);
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    content: ""
+}
+
+.layout div h1 {
+    width: 100%;
+    height: 26.66667vw;
+    font-weight: 700;
+    font-size: 6vw;
+    line-height: 26.66667vw;
+    text-align: center
+}
+
+.layout div h2 {
+    padding: 2.66667vw 0;
+    font-weight: 700;
+    font-size: 4.26667vw;
+    word-wrap: break-word;
+    word-break: break-word
+}
+
+.layout div h3 {
+    padding: 2.66667vw 0;
+    font-weight: 700;
+    font-size: 4vw;
+    text-align: left
+}
+
+.layout div p {
+    padding-bottom: 2.66667vw;
+    font-size: 3.73333vw;
+    line-height: 5.33333vw;
+    text-align: justify;
+    word-wrap: break-word;
+    word-break: break-word
+}
+
+.layout div a {
+    color: #00b0f0
+}
+
+.layout div .text-indent {
+    text-indent: 4.26667vw
+}
+
+.layout div .padding-left {
+    padding-left: 4.26667vw
+}
+
+.layout div .center {
+    text-align: center
+}

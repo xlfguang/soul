@@ -48,6 +48,7 @@ function About() {
     textArea.select();
     document.execCommand("copy");
     document.body.removeChild(textArea);
+    alert(`copy ${value} success`);
   }
   return (
     <AboutBox>

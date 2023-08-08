@@ -38,10 +38,11 @@ const ModalCloseButton = styled.button`
   right: 10px;
   background: none;
   border: none;
-  font-size: 18px;
+  font-size: 28px;
   padding: 0;
   cursor: pointer;
   border: none;
+  color: #fff;
 `;
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {

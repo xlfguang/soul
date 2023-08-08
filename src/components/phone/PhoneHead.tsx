@@ -17,7 +17,7 @@ function PhoneHead(props: { connectWallet: () => void }) {
     },
 
     {
-      path: "/about",
+      path: "/NFT",
       name: t("about"),
     },
   ];

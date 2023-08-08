@@ -59,13 +59,12 @@ function Head(props: { connectWallet: () => void }) {
       name: "introduction",
     },
     {
-      path: "/about",
+      path: "/NFT",
       name: t("about"),
     },
   ];
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   // 获取当前路由路径 来给.link 加上activeLink 的类名
 
@@ -113,14 +112,15 @@ function Head(props: { connectWallet: () => void }) {
               </div>
             );
           })}
-
-          <ConnectWallet
-            onClick={() => {
-              props.connectWallet();
-            }}
-          >
-            Connect Wallet
-          </ConnectWallet>
+          {location.pathname === "/NFT" && (
+            <ConnectWallet
+              onClick={() => {
+                props.connectWallet();
+              }}
+            >
+              Connect Wallet
+            </ConnectWallet>
+          )}
         </HeadRightBox>
       </HeadBox>
       <PhoneHead
