@@ -343,6 +343,7 @@ export const BarImg = styled.img`
   width: 100%;
   max-width: 1130px;
   margin: 20px auto;
+  display: block;
 `;
 export const InviteBtn = styled.button`
   width: 80px;

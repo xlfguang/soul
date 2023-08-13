@@ -45,5 +45,10 @@
     "about2": "簡單開放",
     "about3": "持續進步",
     "about4": "追求本質",
-    "about5": "保持年輕"
+    "about5": "保持年輕",
+    "transfer_address": "轉賬地址",
+    "transfer_amount": "轉賬數量",
+    "fragment_amount": "碎片數量",
+    "transfer_button": "轉賬",
+    "invitation_link": "邀請連結"
 }

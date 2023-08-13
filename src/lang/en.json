@@ -45,5 +45,10 @@
     "about2": "Open-minded",
     "about3": "Keep moving",
     "about4": "Always genuine",
-    "about5": "Forever young"
+    "about5": "Forever young",
+    "transfer_address": "Transfer Address",
+    "transfer_amount": "Transfer Amount",
+    "fragment_amount": "Fragment Amount",
+    "transfer_button": "Transfer",
+    "invitation_link": "Invitation Link"
 }

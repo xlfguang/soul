@@ -45,5 +45,10 @@
     "about2": "Open-minded",
     "about3": "Keep moving",
     "about4": "Always genuine",
-    "about5": "Forever young"
+    "about5": "Forever young",
+    "transfer_address": "転送アドレス",
+    "transfer_amount": "転送数量",
+    "fragment_amount": "フラグメント数量",
+    "transfer_button": "転送",
+    "invitation_link": "招待リンク"
 }

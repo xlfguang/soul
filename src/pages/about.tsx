@@ -32,6 +32,7 @@ import ProgressBar from "@/components/ProgressBar";
 import { useState } from "react";
 import Slider from "@/components/Slider";
 import Modal from "@/components/Modal";
+import Myinput from "@/components/Myinput";
 
 function About() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -40,7 +41,15 @@ function About() {
   const [synthesisSliderShow, setSynthesisSliderShow] = useState(false);
   const [mintValue, setMintValue] = useState(0);
   const [synthesisValue, setSynthesisValue] = useState(0);
-  const [copyValue, setCopyValue] = useState("");
+
+  const [transferAddress, setTransferAddress] = useState("123");
+  const [transferAmount, setTransferAmount] = useState("");
+  const [fragmentAmount, setFragmentAmount] = useState("");
+  const [invitationLink, setInvitationLink] = useState(
+    "http://127.0.0.1:5173/#/NFT"
+  );
+
+  const [copyShow, setCopyShow] = useState(false);
   function copyToClipboard(value: string) {
     const textArea = document.createElement("textarea");
     textArea.value = value;
@@ -242,9 +251,68 @@ function About() {
           NEXT
         </MintBtn>
       </Modal>
+      <Modal
+        width="60%"
+        isOpen={copyShow}
+        onClose={function (): void {
+          setCopyShow(false);
+        }}
+      >
+        <Myinput
+          inputValue={transferAddress}
+          setinputValue={(e) => {
+            setTransferAddress(e);
+          }}
+          titleText={t("fragment_amount")}
+          buttonText={""}
+        ></Myinput>
+        <Myinput
+          inputOrText={true}
+          inputValue={transferAmount}
+          setinputValue={(e) => {
+            setTransferAmount(e);
+          }}
+          titleText={t("transfer_address")}
+          buttonText={""}
+        ></Myinput>
+        <Myinput
+          inputOrText={true}
+          inputValue={fragmentAmount}
+          setinputValue={(e) => {
+            setFragmentAmount(e);
+          }}
+          titleText={t("transfer_amount")}
+        ></Myinput>
+        <MintBtn
+          style={{
+            marginLeft: "300px",
+          }}
+          onClick={() => {}}
+        >
+          transfer
+        </MintBtn>
+        <Myinput
+          inputValue={invitationLink}
+          setinputValue={(e) => {
+            setInvitationLink(e);
+          }}
+          titleText={t("invitation_link")}
+          buttonText={"copy"}
+        ></Myinput>
+        <MintBtn
+          style={{
+            marginLeft: "300px",
+          }}
+          onClick={() => {
+            copyToClipboard(invitationLink);
+          }}
+        >
+          copy
+        </MintBtn>
+      </Modal>
       <InviteBtn
         onClick={() => {
-          copyToClipboard(copyValue);
+          setCopyShow(true);
         }}
       >
         <ImageBack>

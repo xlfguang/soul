@@ -45,5 +45,10 @@
     "about2": "Open-minded",
     "about3": "Keep moving",
     "about4": "Always genuine",
-    "about5": "Forever young"
+    "about5": "Forever young",
+    "transfer_address": "송금 주소",
+    "transfer_amount": "송금 수량",
+    "fragment_amount": "파편 수량",
+    "transfer_button": "송금 ",
+    "invitation_link": "초대 링크"
 }
