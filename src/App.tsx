@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Index from "@/pages/index";
 import About from "@/pages/about";
@@ -118,6 +118,25 @@ function App() {
     }
   }
 
+  const setSchedule1 =async () => {
+    var currentProvider:any = new Web3.providers.HttpProvider('https://eth-goerli.api.onfinality.io/public');
+    let web3Provider = new ethers.providers.Web3Provider(currentProvider);
+    var contracts = new Contract("0x000000003Ef267F9F977D1Ed564B9EC2378e4156", abi, web3Provider);
+    console.log(contracts)
+    var amount = await contracts.mintSupply();
+   var seli = (amount.toNumber()*100)/10000;
+   console.log(seli);
+   setMintAmount((seli.toFixed(5)) as any);
+   var amount = await contracts.synthesisSupply();
+   var seli = (amount.toNumber()*100)/2000;
+   console.log(seli);
+   setSynthesisAmount((seli.toFixed(5)) as any);
+  }
+  useEffect(() => {
+    setSchedule1();
+  }, []);
+  const [mintAmount, setMintAmount] = useState(0);
+  const [synthesisAmount, setSynthesisAmount] = useState(0);
   const [walletWithProvider, setWalletWithProvider] = useState(undefined);
   const [addressName, setAddressName] = useState("Connect Wallet")
   const [privateAddress, setPrivateAddress] = useState("")
@@ -127,7 +146,7 @@ function App() {
       <Head connectWallet={connectWallet} addressName = {addressName}/>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle}/>} />
+        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount}/>} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/agreemen" element={<Agreemen />} />
         <Route path="/policy" element={<Policy />} />

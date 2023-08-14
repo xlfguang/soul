@@ -34,7 +34,7 @@ import Slider from "@/components/Slider";
 import Modal from "@/components/Modal";
 import Myinput from "@/components/Myinput";
 
-function About(props: {mint:any,synthesisHandle:any}) {
+function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmount:any}) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
   const [mintSliderShow, setMintSliderShow] = useState(false);
@@ -138,7 +138,7 @@ function About(props: {mint:any,synthesisHandle:any}) {
       </CardListBox>
       <BtnBox>
         <BtnItem>
-          <ProgressBar value={10} maxValue={100}></ProgressBar>
+          <ProgressBar value={props.mintAmount} maxValue={100}></ProgressBar>
           <BtnFlex>
             <MintBtn
               onClick={() => {
@@ -152,7 +152,7 @@ function About(props: {mint:any,synthesisHandle:any}) {
           </BtnFlex>
         </BtnItem>
         <BtnItem>
-          <ProgressBar value={80} maxValue={100}></ProgressBar>
+          <ProgressBar value={props.synthesisAmount} maxValue={100}></ProgressBar>
           <BtnFlex>
             <MintBtn
               onClick={() => {
