@@ -25,7 +25,7 @@ export type LanguageList = {
   value: Language;
 }[];
 
-function Head(props: { connectWallet: () => void }) {
+function Head(props: { connectWallet: () => void ,addressName:any}) {
   const { i18n, t } = useTranslation();
   const [language, setLanguage] = useState<Language>(Language.en);
   const languageList: LanguageList = [
@@ -118,7 +118,7 @@ function Head(props: { connectWallet: () => void }) {
                 props.connectWallet();
               }}
             >
-              Connect Wallet
+              {props.addressName}
             </ConnectWallet>
           )}
         </HeadRightBox>
@@ -127,6 +127,7 @@ function Head(props: { connectWallet: () => void }) {
         connectWallet={function (): void {
           props.connectWallet();
         }}
+        addressName = {props.addressName}
       ></PhoneHead>
     </>
   );

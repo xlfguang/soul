@@ -34,7 +34,7 @@ import Slider from "@/components/Slider";
 import Modal from "@/components/Modal";
 import Myinput from "@/components/Myinput";
 
-function About() {
+function About(props: {mint:any,synthesisHandle:any}) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
   const [mintSliderShow, setMintSliderShow] = useState(false);
@@ -246,7 +246,13 @@ function About() {
           style={{
             marginTop: "20px",
           }}
-          onClick={() => {}}
+          onClick={() => {
+            if(mintSliderShow){
+              props.mint(mintValue)
+            }else{
+              props.synthesisHandle(synthesisValue)
+            }
+          }}
         >
           NEXT
         </MintBtn>

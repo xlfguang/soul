@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { LanguageList, Language } from "../web/Head";
 
-function PhoneHead(props: { connectWallet: () => void }) {
+function PhoneHead(props: { connectWallet: () => void,addressName:any }) {
   const { i18n, t } = useTranslation();
   const routerList = [
     {
@@ -55,7 +55,7 @@ function PhoneHead(props: { connectWallet: () => void }) {
               props.connectWallet();
             }}
           >
-            Connect
+            {props.addressName}
           </ConnectWallet>
           <img
             className="download"
