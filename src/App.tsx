@@ -30,17 +30,47 @@ function App() {
         var web3 = new Web3(web3Provider);
       var id =  await web3.eth.net.getId()
       console.log(id);
+        // if(id != 1){
+        //   var rpc = {
+        //     chainId: "0x1",
+        //     chainName: "Ethereum Mainnet",
+        //     nativeCurrency: {
+        //       name: "ETH",
+        //       symbol: "ETH",
+        //       decimals: 18,
+        //     },
+        //     rpcUrls: ["https://eth.llamarpc.com"],
+        //     blockExplorerUrls: ["https://etherscan.io"],
+        //   };
+        //   windowNew.ethereum.request({
+        //     method: 'wallet_addEthereumChain', 
+        //     params: [{
+        //         chainId: rpc.chainId, 
+        //         chainName: rpc.chainName, 
+        //         rpcUrls: [
+        //             rpc.rpcUrls[0], 
+        //         ],
+        //         iconUrls: [
+        //             'https://testnet.hecoinfo.com/favicon.png' 
+        //         ],
+        //         blockExplorerUrls: [
+        //             rpc.blockExplorerUrls[0] 
+        //         ],
+        //         nativeCurrency: rpc.nativeCurrency
+        //     }]
+        // })
+        // }
         if(id != 5){
           var rpc = {
-            chainId: "0x1",
-            chainName: "Ethereum Mainnet",
+            chainId: "0x5",
+            chainName: "Goerli",
             nativeCurrency: {
               name: "ETH",
               symbol: "ETH",
               decimals: 18,
             },
-            rpcUrls: ["https://eth.llamarpc.com"],
-            blockExplorerUrls: ["https://etherscan.io"],
+            rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
+            blockExplorerUrls: ["https://goerli.etherscan.io"],
           };
           windowNew.ethereum.request({
             method: 'wallet_addEthereumChain', 
