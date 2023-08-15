@@ -1,10 +1,10 @@
 import Web from "@/components/web";
 import Phone from "@/components/phone";
-function index() {
+function index(props: { connectWallet: () => void ,addressName:any}) {
   return (
     <>
       <Web></Web>
-      <Phone></Phone>
+      <Phone connectWallet={props.connectWallet} addressName = {props.addressName}></Phone>
     </>
   );
 }

@@ -11,13 +11,13 @@ import index3 from "@/assets/images/index3.png";
 import index4 from "@/assets/images/index4.png";
 import downloadIcon from "@/assets/images/dow.png";
 import { DownloadIcon } from "@/style/phone";
-function Web() {
+function Web(props: { connectWallet: () => void ,addressName:any}) {
   const { t } = useTranslation();
   const [index, setIndex] = useState(0);
 
   return (
     <PhoneBox>
-      <PhoneHead connectWallet={() => {}}></PhoneHead>
+      <PhoneHead connectWallet={props.connectWallet} addressName={props.addressName}></PhoneHead>
       <DisplayContainer
         top={`-${index * 100}vh`}
         setDirection={(e) => {

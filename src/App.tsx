@@ -145,7 +145,7 @@ function App() {
     <>
       <Head connectWallet={connectWallet} addressName = {addressName}/>
       <Routes>
-        <Route path="/" element={<Index />} />
+        <Route path="/" element={<Index connectWallet={connectWallet} addressName = {addressName}/>} />
         <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount}/>} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/agreemen" element={<Agreemen />} />
