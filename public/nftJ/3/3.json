@@ -1,0 +1,11 @@
+{
+    "name": "SOUL",
+    "image": "https://soulappweb3.com/nftP/3/3.png",
+    "attributes": [
+        {
+            "trait_type": "rarity",
+            "value": "SSR"
+        }
+    ],
+    "description": "SSR (Super Super Rare Grade): SSR-grade Soul NFT is a highly rare and valuable digital asset, usually scarcer on the market and priced higher. Total supply: 1,200 (MINT 800, Synthetic 400)."
+}
