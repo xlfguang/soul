@@ -34,7 +34,11 @@ import Slider from "@/components/Slider";
 import Modal from "@/components/Modal";
 import Myinput from "@/components/Myinput";
 
-function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmount:any}) {
+function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmount:any,
+  currentFragmentAmount:any,
+  getFragmentAmount:any,
+  transfer:any
+}) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
   const [mintSliderShow, setMintSliderShow] = useState(false);
@@ -42,11 +46,11 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
   const [mintValue, setMintValue] = useState(0);
   const [synthesisValue, setSynthesisValue] = useState(0);
 
-  const [transferAddress, setTransferAddress] = useState("123");
+  const [transferAddress, setTransferAddress] = useState("");
   const [transferAmount, setTransferAmount] = useState("");
   const [fragmentAmount, setFragmentAmount] = useState("");
   const [invitationLink, setInvitationLink] = useState(
-    "http://127.0.0.1:5173/#/NFT"
+    "https://soulappweb3.com/#/NFT"
   );
 
   const [copyShow, setCopyShow] = useState(false);
@@ -265,11 +269,20 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
         }}
       >
         <Myinput
+          inputValue={props.currentFragmentAmount}
+          setinputValue={(e) => {
+            setFragmentAmount(e);
+          }}
+          titleText={t("fragment_amount")}
+          buttonText={""}
+        ></Myinput>
+        <Myinput
+          inputOrText={true}
           inputValue={transferAddress}
           setinputValue={(e) => {
             setTransferAddress(e);
           }}
-          titleText={t("fragment_amount")}
+          titleText={t("transfer_address")}
           buttonText={""}
         ></Myinput>
         <Myinput
@@ -278,22 +291,15 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
           setinputValue={(e) => {
             setTransferAmount(e);
           }}
-          titleText={t("transfer_address")}
-          buttonText={""}
-        ></Myinput>
-        <Myinput
-          inputOrText={true}
-          inputValue={fragmentAmount}
-          setinputValue={(e) => {
-            setFragmentAmount(e);
-          }}
           titleText={t("transfer_amount")}
         ></Myinput>
         <MintBtn
           style={{
             marginLeft: "300px",
           }}
-          onClick={() => {}}
+          onClick={() => {
+            props.transfer(transferAddress,transferAmount)
+          }}
         >
           transfer
         </MintBtn>
@@ -319,6 +325,7 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
       <InviteBtn
         onClick={() => {
           setCopyShow(true);
+          props.getFragmentAmount();
         }}
       >
         <ImageBack>

@@ -96,7 +96,7 @@ function App() {
      
         var privateAddress = await walletWithProvider.getAddress();
         setPrivateAddress(privateAddress);
-        setAddressName(privateAddress.slice(0,4)+"XXXXX"+privateAddress.slice(-4))
+        setAddressName(privateAddress.slice(0,4)+"......"+privateAddress.slice(-4))
 
   };
 
@@ -110,13 +110,14 @@ function App() {
   return;
   }
     var contracts = new Contract("0x000000003Ef267F9F977D1Ed564B9EC2378e4156", abi, walletWithProvider);
-    var invinteAdr = window.location.hash.slice(5);
+    var invinteAdr = window.location.hash.slice(6);
+    console.log(window.location.hash);
     if(!invinteAdr){
       invinteAdr = "0x0000000000000000000000000000000000000000";
     }
     console.log(invinteAdr);
     try {
-      await contracts.smashEggs(amount,invinteAdr,{value:ethers.utils.parseUnits("0.001","ether").mul(amount)});
+     var tx = await contracts.smashEggs(amount,invinteAdr,{value:ethers.utils.parseUnits("0.001","ether").mul(amount)});
     } catch (error) {
       console.log(error);
       const opts = {
@@ -165,18 +166,58 @@ function App() {
   useEffect(() => {
     setSchedule1();
   }, []);
+  const getFragmentAmount =async () => {
+    if(!walletWithProvider){
+      const opts = {
+        content: 'No wallet connected',
+        duration: 3,
+    };
+    Toast.error(opts);
+  return;
+  }
+    var currentProvider:any = new Web3.providers.HttpProvider('https://eth-goerli.api.onfinality.io/public');
+    let web3Provider = new ethers.providers.Web3Provider(currentProvider);
+    var contracts = new Contract("0x000000003Ef267F9F977D1Ed564B9EC2378e4156", abi, web3Provider);
+    var amount = await contracts.refferAmount(privateAddress);
+    console.log(amount.toString());
+    setFragmentAmount(amount.toString());
+
+  }
+
+  const transfer =async (address:any,amount:any) => {
+    if(!walletWithProvider){
+      const opts = {
+        content: 'No wallet connected',
+        duration: 3,
+    };
+    Toast.error(opts);
+  return;
+  }
+    var contracts = new Contract("0x000000003Ef267F9F977D1Ed564B9EC2378e4156", abi, walletWithProvider);
+    try {
+     var tx = await contracts.transferSynthesis(address,amount);
+    } catch (error) {
+      console.log(error);
+      const opts = {
+        content: 'Transfer Error',
+        duration: 3,
+    };
+    Toast.error(opts);
+    }
+  }
+
   const [mintAmount, setMintAmount] = useState(0);
   const [synthesisAmount, setSynthesisAmount] = useState(0);
   const [walletWithProvider, setWalletWithProvider] = useState(undefined);
   const [addressName, setAddressName] = useState("Connect Wallet")
   const [privateAddress, setPrivateAddress] = useState("")
-
+  const [fragmentAmount, setFragmentAmount] = useState("0")
   return (
     <>
       <Head connectWallet={connectWallet} addressName = {addressName}/>
       <Routes>
         <Route path="/" element={<Index connectWallet={connectWallet} addressName = {addressName}/>} />
-        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount}/>} />
+        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount} currentFragmentAmount = {fragmentAmount} getFragmentAmount = {getFragmentAmount} transfer = {transfer}/>} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/agreemen" element={<Agreemen />} />
         <Route path="/policy" element={<Policy />} />
