@@ -217,7 +217,7 @@ function App() {
       <Head connectWallet={connectWallet} addressName = {addressName}/>
       <Routes>
         <Route path="/" element={<Index connectWallet={connectWallet} addressName = {addressName}/>} />
-        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount} currentFragmentAmount = {fragmentAmount} getFragmentAmount = {getFragmentAmount} transfer = {transfer}/>} />
+        <Route path="/NFT" element={<About mint = {mint} synthesisHandle = {synthesisHandle} mintAmount = {mintAmount} synthesisAmount = {synthesisAmount} currentFragmentAmount = {fragmentAmount} getFragmentAmount = {getFragmentAmount} transfer = {transfer} privateAddress = {privateAddress}/>} />
         <Route path="/introduction" element={<Introduction />} />
         <Route path="/agreemen" element={<Agreemen />} />
         <Route path="/policy" element={<Policy />} />

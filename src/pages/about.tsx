@@ -37,7 +37,8 @@ import Myinput from "@/components/Myinput";
 function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmount:any,
   currentFragmentAmount:any,
   getFragmentAmount:any,
-  transfer:any
+  transfer:any,
+  privateAddress:any
 }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
@@ -306,6 +307,7 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
         <Myinput
           inputValue={invitationLink}
           setinputValue={(e) => {
+            console.log(23242);
             setInvitationLink(e);
           }}
           titleText={t("invitation_link")}
@@ -326,6 +328,7 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
         onClick={() => {
           setCopyShow(true);
           props.getFragmentAmount();
+          setInvitationLink("https://soulappweb3.com/#/NFT"+"#"+props.privateAddress)
         }}
       >
         <ImageBack>
