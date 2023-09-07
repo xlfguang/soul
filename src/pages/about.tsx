@@ -34,11 +34,15 @@ import Slider from "@/components/Slider";
 import Modal from "@/components/Modal";
 import Myinput from "@/components/Myinput";
 
-function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmount:any,
-  currentFragmentAmount:any,
-  getFragmentAmount:any,
-  transfer:any,
-  privateAddress:any
+function About(props: {
+  mint: any;
+  synthesisHandle: any;
+  mintAmount: any;
+  synthesisAmount: any;
+  currentFragmentAmount: any;
+  getFragmentAmount: any;
+  transfer: any;
+  privateAddress: any;
 }) {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
@@ -77,15 +81,15 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
           </ImageBack>
           <CardItem>
             <div className="left">{t("Circulation")}</div>
-            <div className="right">{12000}</div>
+            <div className="right">{6000}</div>
           </CardItem>
           <CardItem>
             <div className="left">{t("Number of MINTs")}</div>
-            <div className="right">{10000}</div>
+            <div className="right">{5000}</div>
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Fragment Synthesis Quantity")}</div>
-            <div className="right">{2000}</div>
+            <div className="right">{1000}</div>
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Release Time")}</div>
@@ -105,28 +109,8 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
           <CardTitle>{t("number of mints")}</CardTitle>
           <CardItem>
             <div className="left">R</div>
-            <div className="right">{6000}</div>
-          </CardItem>
-          <CardItem>
-            <div className="left">SR</div>
             <div className="right">{3000}</div>
-          </CardItem>{" "}
-          <CardItem>
-            <div className="left">SSR</div>
-            <div className="right">{800}</div>
-          </CardItem>{" "}
-          <CardItem>
-            <div className="left">UR</div>
-            <div className="right">{200}</div>
           </CardItem>
-        </CardBox>
-        <CardBox>
-          <ImageBack>
-            {[r1, r2, r3, r4, r5, r6].map((item, i) => {
-              return <img key={i} src={item} />;
-            })}
-          </ImageBack>
-          <CardTitle>{t("Synthetic nft quantity")}</CardTitle>
           <CardItem>
             <div className="left">SR</div>
             <div className="right">{1500}</div>
@@ -138,6 +122,26 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
           <CardItem>
             <div className="left">UR</div>
             <div className="right">{100}</div>
+          </CardItem>
+        </CardBox>
+        <CardBox>
+          <ImageBack>
+            {[r1, r2, r3, r4, r5, r6].map((item, i) => {
+              return <img key={i} src={item} />;
+            })}
+          </ImageBack>
+          <CardTitle>{t("Synthetic nft quantity")}</CardTitle>
+          <CardItem>
+            <div className="left">SR</div>
+            <div className="right">{750}</div>
+          </CardItem>{" "}
+          <CardItem>
+            <div className="left">SSR</div>
+            <div className="right">{200}</div>
+          </CardItem>{" "}
+          <CardItem>
+            <div className="left">UR</div>
+            <div className="right">{50}</div>
           </CardItem>
         </CardBox>
       </CardListBox>
@@ -157,7 +161,10 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
           </BtnFlex>
         </BtnItem>
         <BtnItem>
-          <ProgressBar value={props.synthesisAmount} maxValue={100}></ProgressBar>
+          <ProgressBar
+            value={props.synthesisAmount}
+            maxValue={100}
+          ></ProgressBar>
           <BtnFlex>
             <MintBtn
               onClick={() => {
@@ -252,10 +259,10 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
             marginTop: "20px",
           }}
           onClick={() => {
-            if(mintSliderShow){
-              props.mint(mintValue)
-            }else{
-              props.synthesisHandle(synthesisValue)
+            if (mintSliderShow) {
+              props.mint(mintValue);
+            } else {
+              props.synthesisHandle(synthesisValue);
             }
           }}
         >
@@ -299,7 +306,7 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
             marginLeft: "300px",
           }}
           onClick={() => {
-            props.transfer(transferAddress,transferAmount)
+            props.transfer(transferAddress, transferAmount);
           }}
         >
           transfer
@@ -328,7 +335,9 @@ function About(props: {mint:any,synthesisHandle:any,mintAmount:any,synthesisAmou
         onClick={() => {
           setCopyShow(true);
           props.getFragmentAmount();
-          setInvitationLink("https://soulappweb3.com/#/NFT"+"#"+props.privateAddress)
+          setInvitationLink(
+            "https://soulappweb3.com/#/NFT" + "#" + props.privateAddress
+          );
         }}
       >
         <ImageBack>
