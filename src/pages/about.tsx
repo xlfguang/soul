@@ -235,7 +235,7 @@ function About(props: {
         {mintSliderShow && (
           <Slider
             min={1}
-            max={50}
+            max={20}
             step={1}
             initialValue={mintValue}
             onChange={(e) => {
