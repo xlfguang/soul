@@ -116,7 +116,7 @@ function Head(props: { connectWallet: () => void; addressName: any }) {
             <div
               className="link"
               onClick={() => {
-                window.open("");
+                window.open("https://soulnft.gitbook.io/soulnft/");
               }}
             >
               {t("whitepaper")}
