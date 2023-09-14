@@ -50,5 +50,6 @@
     "transfer_amount": "송금 수량",
     "fragment_amount": "파편 수량",
     "transfer_button": "송금 ",
-    "invitation_link": "초대 링크"
+    "invitation_link": "초대 링크",
+    "whitepaper": "백서"
 }

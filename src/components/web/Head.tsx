@@ -25,7 +25,7 @@ export type LanguageList = {
   value: Language;
 }[];
 
-function Head(props: { connectWallet: () => void ,addressName:any}) {
+function Head(props: { connectWallet: () => void; addressName: any }) {
   const { i18n, t } = useTranslation();
   const [language, setLanguage] = useState<Language>(Language.en);
   const languageList: LanguageList = [
@@ -113,6 +113,17 @@ function Head(props: { connectWallet: () => void ,addressName:any}) {
             );
           })}
           {location.pathname === "/NFT" && (
+            <div
+              className="link"
+              onClick={() => {
+                window.open("");
+              }}
+            >
+              {t("whitepaper")}
+            </div>
+          )}
+
+          {location.pathname === "/NFT" && (
             <ConnectWallet
               onClick={() => {
                 props.connectWallet();
@@ -127,7 +138,7 @@ function Head(props: { connectWallet: () => void ,addressName:any}) {
         connectWallet={function (): void {
           props.connectWallet();
         }}
-        addressName = {props.addressName}
+        addressName={props.addressName}
       ></PhoneHead>
     </>
   );

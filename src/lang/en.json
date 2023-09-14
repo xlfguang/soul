@@ -50,5 +50,6 @@
     "transfer_amount": "Transfer Amount",
     "fragment_amount": "Fragment Amount",
     "transfer_button": "Transfer",
-    "invitation_link": "Invitation Link"
+    "invitation_link": "Invitation Link",
+    "whitepaper": "Whitepaper"
 }
