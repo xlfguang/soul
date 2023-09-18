@@ -383,8 +383,23 @@ export const IntroductionContainer = styled.div`
   max-width: 1040px;
   width: 100%;
   margin: auto;
+  @media (max-width: 768px) {
+    padding: 0 10px;
+  }
 `;
 export const AboutImgBox = styled.div`
+  margin: auto;
+  max-width: 1040px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+export const AboutImgBox2 = styled.div`
   margin: auto;
   max-width: 1040px;
   width: 100%;
@@ -403,6 +418,9 @@ export const AboutImgItem = styled.div<AboutImgItemPorps>`
   background-repeat: no-repeat;
   background-size: 162px 310px;
   position: relative;
+  @media (max-width: 768px) {
+    margin-bottom: 38px;
+  }
   &:after {
     content: "${(props) => props.centent}";
     position: absolute;
@@ -426,6 +444,11 @@ export const AboutImgItemTow = styled.div<AboutImgItemPorps>`
   background-repeat: no-repeat;
   background-size: 100px;
   position: relative;
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+    background-size: 60px;
+  }
   &:after {
     content: "${(props) => props.centent}";
     position: absolute;
@@ -438,6 +461,9 @@ export const AboutImgItemTow = styled.div<AboutImgItemPorps>`
     font-size: 18px;
     line-height: 25px;
     white-space: nowrap;
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 `;
 export const TWbox = styled.footer`

@@ -12,7 +12,21 @@ function PhoneMain() {
           Embracing the Value and Experience of Building Genuine Connections
         </p>
       </PhoneContent>
-      <PhoneDownloadBtn isabsolute={true}>{t("download")}</PhoneDownloadBtn>
+      <PhoneDownloadBtn
+        onClick={() => {
+          // 判断用户是ios还是安卓
+          const u = navigator.userAgent;
+          const isAndroid = u.indexOf("Android") > -1 || u.indexOf("Adr") > -1; //android终端
+          window.open(
+            isAndroid
+              ? "https://play.google.com/store/apps/details?id=com.soul.android.international"
+              : "https://apps.apple.com/jp/app/soul/id1472322409"
+          );
+        }}
+        isabsolute={true}
+      >
+        {t("download")}
+      </PhoneDownloadBtn>
     </PhoneMainBox>
   );
 }

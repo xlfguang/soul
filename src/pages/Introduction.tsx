@@ -1,5 +1,6 @@
 import {
   AboutImgBox,
+  AboutImgBox2,
   AboutImgItem,
   AboutImgItemTow,
   IntroductionBox,
@@ -38,13 +39,13 @@ function Introduction() {
         <IntroductionContainer>
           <h2>{t("CulturesandValues")}</h2>
         </IntroductionContainer>
-        <AboutImgBox>
+        <AboutImgBox2>
           <AboutImgItemTow img={about1} centent={t("about1")}></AboutImgItemTow>
           <AboutImgItemTow img={about2} centent={t("about2")}></AboutImgItemTow>
           <AboutImgItemTow img={about3} centent={t("about3")}></AboutImgItemTow>
           <AboutImgItemTow img={about4} centent={t("about4")}></AboutImgItemTow>
           <AboutImgItemTow img={about5} centent={t("about5")}></AboutImgItemTow>
-        </AboutImgBox>
+        </AboutImgBox2>
         <TWbox>
           <p>
             <a href="https://twitter.com/Soulappweb3" target="_black">

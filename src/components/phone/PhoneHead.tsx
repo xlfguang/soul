@@ -8,12 +8,16 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { LanguageList, Language } from "../web/Head";
 
-function PhoneHead(props: { connectWallet: () => void,addressName:any }) {
+function PhoneHead(props: { connectWallet: () => void; addressName: any }) {
   const { i18n, t } = useTranslation();
   const routerList = [
     {
       path: "/",
       name: t("index"),
+    },
+    {
+      path: "/introduction",
+      name: "introduction",
     },
 
     {

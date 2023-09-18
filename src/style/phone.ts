@@ -114,6 +114,9 @@ export const DownloadIcon = styled.div`
   bottom: 0;
   width: 100%;
   height: 8.53333vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   /* 动画是结束就从头再来 */
   img {
     width: 8.53333vw;
