@@ -7,9 +7,11 @@ import Agreemen from "@/pages/agreemen";
 import Policy from "@/pages/policy";
 import Head from "./components/web/Head";
 import Web3 from "web3";
-import { Contract, ethers } from "ethers";
+import { BigNumber, Contract, ethers } from "ethers";
 import { Toast } from "@douyinfe/semi-ui";
 import abi from "./abi/ido.json";
+import axios from "axios";
+import BalanceTree from './tree/balance-tree';
 function App() {
   const connectWallet = async() => {
     var web3Provider;
@@ -97,7 +99,7 @@ function App() {
         var privateAddress = await walletWithProvider.getAddress();
         setPrivateAddress(privateAddress);
         setAddressName(privateAddress.slice(0,4)+"......"+privateAddress.slice(-4))
-
+        checkAirdrop(privateAddress);
   };
 
   const mint =async (amount:any) => {
@@ -184,6 +186,62 @@ function App() {
 
   }
 
+
+  const checkAirdrop = async (privateAddress: string) => {
+    //读取list
+    var arrayList = [];
+    var htmlobj = await axios.get("http://127.0.0.1:5173/airdrop_list.csv");
+    var text = htmlobj.data;
+    var textList = text.split(/[\n]/g);
+    var count = textList ? textList.length : 0;
+    //判断地址是否在空投列表
+    checkAddress(privateAddress, textList);
+    for (var i = 0; i < count; i++) {
+        var newObject = {} as any;
+        var unit = textList[i];
+        var childList = unit.split(/,/g);
+        newObject["account"] = childList[4];
+        newObject["amount"] = BigNumber.from(childList[5] | 0);
+        arrayList.push(newObject);
+    }
+
+  var tree = new BalanceTree(arrayList);
+  var hexRoot = tree.getHexRoot();
+    console.log(hexRoot);
+}
+//检查地址是否存在
+const checkAddress = (address: string, list: any) =>{
+    var count = list ? list.length : 0;
+    var bool = false;
+    var amount = 0;
+    for (var i = 0; i < count; i++) {
+        var unit = list[i];
+        var childList = unit.split(/,/g);
+        if (address == childList[4]) {
+            var objectNew = {} as any;
+            objectNew["index"] = childList[0];
+            objectNew["address"] = childList[4];
+            objectNew["amount"] = childList[5];
+            amount = childList[5] | 0;
+            setCurrentObj(objectNew);
+            bool = true;
+        }
+        if (!bool) {
+          const opts = {
+            content: 'Not Eligible For Airdrop',
+            duration: 3,
+        };
+        Toast.error(opts);
+      } else {
+        const opts = {
+          content: 'Congratulations On Qualifying',
+          duration: 3,
+      };
+      Toast.error(opts);
+      }
+    }
+}
+
   const transfer =async (address:any,amount:any) => {
     if(!walletWithProvider){
       const opts = {
@@ -212,6 +270,7 @@ function App() {
   const [addressName, setAddressName] = useState("Connect Wallet")
   const [privateAddress, setPrivateAddress] = useState("")
   const [fragmentAmount, setFragmentAmount] = useState("0")
+  const [currentObj,setCurrentObj] = useState({});
   return (
     <>
       <Head connectWallet={connectWallet} addressName = {addressName}/>
