@@ -111,6 +111,16 @@ function App() {
     Toast.error(opts);
   return;
   }
+
+  var bools =checkAddress(privateAddress,textList);
+  if(!bools){
+    const opts = {
+      content: 'Not In The Whitelist',
+      duration: 3,
+  };
+  Toast.error(opts);
+return;
+  }
     var contracts = new Contract("0x000000003Ef267F9F977D1Ed564B9EC2378e4156", abi, walletWithProvider);
     var invinteAdr = window.location.hash.slice(6);
     console.log(window.location.hash);
@@ -119,7 +129,9 @@ function App() {
     }
     console.log(invinteAdr);
     try {
-     var tx = await contracts.smashEggs(amount,invinteAdr,{value:ethers.utils.parseUnits("0.001","ether").mul(amount)});
+    var   currentObj1= currentObj as any;
+      const proof0 = (tree as any).getProof(currentObj1.index | 0, currentObj1.address, BigNumber.from(currentObj1.amount | 0));
+     var tx = await contracts.smashEggs(proof0,currentObj1.index,amount,invinteAdr,{value:ethers.utils.parseUnits("0.001","ether").mul(amount)});
     } catch (error) {
       console.log(error);
       const opts = {
@@ -188,13 +200,13 @@ function App() {
 
 
   const checkAirdrop = async (privateAddress: string) => {
-    //读取list
+  
     var arrayList = [];
     var htmlobj = await axios.get("http://127.0.0.1:5173/airdrop_list.csv");
     var text = htmlobj.data;
     var textList = text.split(/[\n]/g);
     var count = textList ? textList.length : 0;
-    //判断地址是否在空投列表
+    setTextList(textList);
     checkAddress(privateAddress, textList);
     for (var i = 0; i < count; i++) {
         var newObject = {} as any;
@@ -206,14 +218,16 @@ function App() {
     }
 
   var tree = new BalanceTree(arrayList);
+  console.log(tree,"tree");
   var hexRoot = tree.getHexRoot();
+  setTree(tree);
     console.log(hexRoot);
 }
-//检查地址是否存在
 const checkAddress = (address: string, list: any) =>{
     var count = list ? list.length : 0;
     var bool = false;
     var amount = 0;
+    console.log(list,"list")
     for (var i = 0; i < count; i++) {
         var unit = list[i];
         var childList = unit.split(/,/g);
@@ -228,17 +242,18 @@ const checkAddress = (address: string, list: any) =>{
         }
         if (!bool) {
           const opts = {
-            content: 'Not Eligible For Airdrop',
+            content: 'Not In The Whitelist',
             duration: 3,
         };
         Toast.error(opts);
       } else {
         const opts = {
-          content: 'Congratulations On Qualifying',
+          content: 'In Whitelist',
           duration: 3,
       };
-      Toast.error(opts);
+      Toast.success(opts);
       }
+      return bool;
     }
 }
 
@@ -271,6 +286,8 @@ const checkAddress = (address: string, list: any) =>{
   const [privateAddress, setPrivateAddress] = useState("")
   const [fragmentAmount, setFragmentAmount] = useState("0")
   const [currentObj,setCurrentObj] = useState({});
+  const [tree,setTree] = useState({});
+  const [textList,setTextList] = useState({});
   return (
     <>
       <Head connectWallet={connectWallet} addressName = {addressName}/>

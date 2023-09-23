@@ -1,5 +1,4 @@
 import { bufferToHex, keccak256 } from 'ethereumjs-util';
-
 export default class MerkleTree {
     private readonly elements: Buffer[]
     private readonly bufferElementPositionIndex: { [hexElement: string]: number }
