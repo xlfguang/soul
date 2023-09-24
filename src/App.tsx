@@ -8,10 +8,11 @@ import Policy from "@/pages/policy";
 import Head from "./components/web/Head";
 import Web3 from "web3";
 import { BigNumber, Contract, ethers } from "ethers";
-import { Toast } from "@douyinfe/semi-ui";
+// import { Toast } from "@douyinfe/semi-ui";
 import abi from "./abi/ido.json";
 import axios from "axios";
 import BalanceTree from "./tree/balance-tree";
+import { toast } from "react-toastify";
 function App() {
   const connectWallet = async () => {
     let web3Provider;
@@ -102,21 +103,45 @@ function App() {
 
   const mint = async (amount: any) => {
     if (!walletWithProvider) {
-      const opts = {
-        content: "No wallet connected",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // const opts = {
+      //   content: "No wallet connected",
+      //   duration: 3,
+      // };
+      // Toast.error(opts);
+      toast("No wallet connected", {
+        type: "error",
+
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
 
     const bools = checkAddress(privateAddress, textList);
     if (!bools) {
-      const opts = {
-        content: "Not In The Whitelist",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // const opts = {
+      //   content: "Not In The Whitelist",
+      //   duration: 3,
+      // };
+      // Toast.error(opts);
+      toast("Not In The Whitelist", {
+        type: "error",
+
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     const contracts = new Contract(
@@ -146,20 +171,38 @@ function App() {
       );
     } catch (error) {
       console.log(error);
-      const opts = {
-        content: "Mint Error",
-        duration: 3,
-      };
-      Toast.error(opts);
+
+      // Toast.error(opts);
+
+      toast("Mint Error", {
+        position: "top-center",
+        type: "error",
+
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
   const synthesisHandle = async (amount: any) => {
     if (!walletWithProvider) {
-      const opts = {
-        content: "No wallet connected",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // Toast.error(opts);
+      toast("No wallet connected", {
+        position: "top-center",
+        type: "error",
+
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     const contracts = new Contract(
@@ -171,11 +214,17 @@ function App() {
     try {
       await contracts.synthesisHandle(amount);
     } catch (error) {
-      const opts = {
-        content: "Synthesis Error",
-        duration: 3,
-      };
-      Toast.error(opts);
+      toast("Synthesis Error", {
+        position: "top-center",
+        type: "error",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 
@@ -204,11 +253,19 @@ function App() {
   }, []);
   const getFragmentAmount = async () => {
     if (!walletWithProvider) {
-      const opts = {
-        content: "No wallet connected",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // Toast.error(opts);
+      toast("No wallet connected", {
+        position: "top-center",
+        type: "error",
+
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     const currentProvider: any = new Web3.providers.HttpProvider(
@@ -268,28 +325,49 @@ function App() {
       }
     }
     if (!bool) {
-      const opts = {
-        content: "Not In The Whitelist",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // Toast.error(opts);
+      toast("Not In The Whitelist", {
+        position: "top-center",
+        type: "error",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } else {
-      const opts = {
-        content: "In Whitelist",
-        duration: 3,
-      };
-      Toast.success(opts);
+      // Toast.success(opts);
+      toast("In Whitelist", {
+        position: "top-center",
+        type: "success",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
     return bool;
   };
 
   const transfer = async (address: any, amount: any) => {
     if (!walletWithProvider) {
-      const opts = {
-        content: "No wallet connected",
-        duration: 3,
-      };
-      Toast.error(opts);
+      // Toast.error(opts);
+      toast("No wallet connected", {
+        position: "top-center",
+        type: "error",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       return;
     }
     const contracts = new Contract(
@@ -301,11 +379,19 @@ function App() {
       const tx = await contracts.transferSynthesis(address, amount);
     } catch (error) {
       console.log(error);
-      const opts = {
-        content: "Transfer Error",
-        duration: 3,
-      };
-      Toast.error(opts);
+
+      // Toast.error(opts);
+      toast("Transfer Error", {
+        position: "top-center",
+        type: "error",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
 

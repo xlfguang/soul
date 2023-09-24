@@ -13,12 +13,12 @@ export default defineConfig({
   define: {
     global: {},
   },
-  build: {
-    rollupOptions: {
-      external: [
-        // ...其他外部模块
-        /^@babel\/runtime-corejs3/,
-      ],
-    },
-  },
+  // build: {
+  //   rollupOptions: {
+  //     external: [
+  //       // ...其他外部模块
+  //       /^@babel\/runtime-corejs3/,
+  //     ],
+  //   },
+  // },
 });
