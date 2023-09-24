@@ -227,7 +227,7 @@ function App() {
 
   const checkAirdrop = async (privateAddress: string) => {
     const arrayList = [];
-    const htmlobj = await axios.get("http://127.0.0.1:5174/airdrop_list.csv");
+    const htmlobj = await axios.get("http://127.0.0.1:5173/airdrop_list.csv");
     const text = htmlobj.data;
     console.log(text);
     const textList = text.split(/[\r\n]+/g);
@@ -266,7 +266,6 @@ function App() {
         setCurrentObj(objectNew);
         bool = true;
       }
-     
     }
     if (!bool) {
       const opts = {
