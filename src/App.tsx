@@ -227,9 +227,10 @@ function App() {
 
   const checkAirdrop = async (privateAddress: string) => {
     const arrayList = [];
-    const htmlobj = await axios.get("http://127.0.0.1:5173/airdrop_list.csv");
+    const htmlobj = await axios.get("http://127.0.0.1:5174/airdrop_list.csv");
     const text = htmlobj.data;
-    const textList = text.split(/[\n]/g);
+    console.log(text);
+    const textList = text.split(/[\r\n]+/g);
     const count = textList ? textList.length : 0;
     setTextList(textList);
     checkAddress(privateAddress, textList);
@@ -241,7 +242,7 @@ function App() {
       newObject["amount"] = BigNumber.from(childList[5] | 0);
       arrayList.push(newObject);
     }
-
+    console.log(arrayList, "arrayList");
     const tree = new BalanceTree(arrayList);
     console.log(tree, "tree");
     const hexRoot = tree.getHexRoot();
@@ -265,21 +266,22 @@ function App() {
         setCurrentObj(objectNew);
         bool = true;
       }
-      if (!bool) {
-        const opts = {
-          content: "Not In The Whitelist",
-          duration: 3,
-        };
-        Toast.error(opts);
-      } else {
-        const opts = {
-          content: "In Whitelist",
-          duration: 3,
-        };
-        Toast.success(opts);
-      }
-      return bool;
+     
     }
+    if (!bool) {
+      const opts = {
+        content: "Not In The Whitelist",
+        duration: 3,
+      };
+      Toast.error(opts);
+    } else {
+      const opts = {
+        content: "In Whitelist",
+        duration: 3,
+      };
+      Toast.success(opts);
+    }
+    return bool;
   };
 
   const transfer = async (address: any, amount: any) => {

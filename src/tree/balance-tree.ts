@@ -1,10 +1,12 @@
 import MerkleTree from './merkle-tree'
 import { BigNumber, utils } from 'ethers'
+import { Buffer } from 'buffer';
 export default class BalanceTree {
     private readonly tree: MerkleTree
     constructor(balances: { account: string; amount: BigNumber }[]) {
         this.tree = new MerkleTree(
             balances.map(({ account, amount }, index) => {
+                console.log(BalanceTree.toNode(index, account, amount))
                 return BalanceTree.toNode(index, account, amount)
             })
         )

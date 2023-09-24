@@ -1,4 +1,5 @@
 import { bufferToHex, keccak256 } from 'ethereumjs-util';
+import { send } from 'vite';
 export default class MerkleTree {
     private readonly elements: Buffer[]
     private readonly bufferElementPositionIndex: { [hexElement: string]: number }
@@ -54,7 +55,6 @@ export default class MerkleTree {
         if (!second) {
             return first
         }
-
         return keccak256(MerkleTree.sortAndConcat(first, second))
     }
 
