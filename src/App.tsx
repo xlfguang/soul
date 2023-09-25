@@ -13,6 +13,8 @@ import abi from "./abi/ido.json";
 import axios from "axios";
 import BalanceTree from "./tree/balance-tree";
 import { toast } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const connectWallet = async () => {
     let web3Provider;
@@ -33,62 +35,62 @@ function App() {
     const web3 = new Web3(web3Provider);
     const id = await web3.eth.net.getId();
     console.log(id);
-    // if(id != 1){
-    //   var rpc = {
-    //     chainId: "0x1",
-    //     chainName: "Ethereum Mainnet",
-    //     nativeCurrency: {
-    //       name: "ETH",
-    //       symbol: "ETH",
-    //       decimals: 18,
-    //     },
-    //     rpcUrls: ["https://eth.llamarpc.com"],
-    //     blockExplorerUrls: ["https://etherscan.io"],
-    //   };
-    //   windowNew.ethereum.request({
-    //     method: 'wallet_addEthereumChain',
-    //     params: [{
-    //         chainId: rpc.chainId,
-    //         chainName: rpc.chainName,
-    //         rpcUrls: [
-    //             rpc.rpcUrls[0],
-    //         ],
-    //         iconUrls: [
-    //             'https://testnet.hecoinfo.com/favicon.png'
-    //         ],
-    //         blockExplorerUrls: [
-    //             rpc.blockExplorerUrls[0]
-    //         ],
-    //         nativeCurrency: rpc.nativeCurrency
-    //     }]
-    // })
-    // }
-    if (id != 5) {
-      const rpc = {
-        chainId: "0x5",
-        chainName: "Goerli",
+    if(id != 1){
+      var rpc = {
+        chainId: "0x1",
+        chainName: "Ethereum Mainnet",
         nativeCurrency: {
           name: "ETH",
           symbol: "ETH",
           decimals: 18,
         },
-        rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
-        blockExplorerUrls: ["https://goerli.etherscan.io"],
+        rpcUrls: ["https://eth.llamarpc.com"],
+        blockExplorerUrls: ["https://etherscan.io"],
       };
       windowNew.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [
-          {
+        method: 'wallet_addEthereumChain',
+        params: [{
             chainId: rpc.chainId,
             chainName: rpc.chainName,
-            rpcUrls: [rpc.rpcUrls[0]],
-            iconUrls: ["https://testnet.hecoinfo.com/favicon.png"],
-            blockExplorerUrls: [rpc.blockExplorerUrls[0]],
-            nativeCurrency: rpc.nativeCurrency,
-          },
-        ],
-      });
+            rpcUrls: [
+                rpc.rpcUrls[0],
+            ],
+            iconUrls: [
+                'https://testnet.hecoinfo.com/favicon.png'
+            ],
+            blockExplorerUrls: [
+                rpc.blockExplorerUrls[0]
+            ],
+            nativeCurrency: rpc.nativeCurrency
+        }]
+    })
     }
+    // if (id != 5) {
+    //   const rpc = {
+    //     chainId: "0x5",
+    //     chainName: "Goerli",
+    //     nativeCurrency: {
+    //       name: "ETH",
+    //       symbol: "ETH",
+    //       decimals: 18,
+    //     },
+    //     rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
+    //     blockExplorerUrls: ["https://goerli.etherscan.io"],
+    //   };
+    //   windowNew.ethereum.request({
+    //     method: "wallet_addEthereumChain",
+    //     params: [
+    //       {
+    //         chainId: rpc.chainId,
+    //         chainName: rpc.chainName,
+    //         rpcUrls: [rpc.rpcUrls[0]],
+    //         iconUrls: ["https://testnet.hecoinfo.com/favicon.png"],
+    //         blockExplorerUrls: [rpc.blockExplorerUrls[0]],
+    //         nativeCurrency: rpc.nativeCurrency,
+    //       },
+    //     ],
+    //   });
+    // }
     const provider = new ethers.providers.Web3Provider(web3Provider);
     const walletWithProvider: any = provider.getSigner();
     setWalletWithProvider(walletWithProvider);
@@ -123,29 +125,29 @@ function App() {
       return;
     }
 
-    const bools = checkAddress(privateAddress, textList);
-    if (!bools) {
-      // const opts = {
-      //   content: "Not In The Whitelist",
-      //   duration: 3,
-      // };
-      // Toast.error(opts);
-      toast("Not In The Whitelist", {
-        type: "error",
+    // const bools = checkAddress(privateAddress, textList);
+    // if (!bools) {
+    //   // const opts = {
+    //   //   content: "Not In The Whitelist",
+    //   //   duration: 3,
+    //   // };
+    //   // Toast.error(opts);
+    //   // toast("Not In The Whitelist", {
+    //   //   type: "error",
 
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
+    //   //   position: "top-center",
+    //   //   autoClose: 5000,
+    //   //   hideProgressBar: false,
+    //   //   closeOnClick: true,
+    //   //   pauseOnHover: true,
+    //   //   draggable: true,
+    //   //   progress: undefined,
+    //   //   theme: "light",
+    //   // });
+    //  // return;
+    // }
     const contracts = new Contract(
-      "0x000000003Ef267F9F977D1Ed564B9EC2378e4156",
+      "0x00000000aF8c17Ac329fFb474466261338cFBd10",
       abi,
       walletWithProvider
     );
@@ -157,11 +159,18 @@ function App() {
     console.log(invinteAdr);
     try {
       const currentObj1 = currentObj as any;
-      const proof0 = (tree as any).getProof(
-        currentObj1.index | 0,
-        currentObj1.address,
-        BigNumber.from(currentObj1.amount | 0)
-      );
+      var proof0;
+      try {
+         proof0 = (tree as any).getProof(
+          currentObj1.index | 0,
+          currentObj1.address,
+          BigNumber.from(currentObj1.amount | 0)
+        );
+      } catch (error) {
+        proof0 = [];
+        currentObj1.index = 0;
+      }
+     
       const tx = await contracts.smashEggs(
         proof0,
         currentObj1.index,
@@ -206,7 +215,7 @@ function App() {
       return;
     }
     const contracts = new Contract(
-      "0x000000003Ef267F9F977D1Ed564B9EC2378e4156",
+      "0x00000000aF8c17Ac329fFb474466261338cFBd10",
       abi,
       walletWithProvider
     );
@@ -230,11 +239,11 @@ function App() {
 
   const setSchedule1 = async () => {
     const currentProvider: any = new Web3.providers.HttpProvider(
-      "https://eth-goerli.api.onfinality.io/public"
+      "https://eth.llamarpc.com"
     );
     const web3Provider = new ethers.providers.Web3Provider(currentProvider);
     const contracts = new Contract(
-      "0x000000003Ef267F9F977D1Ed564B9EC2378e4156",
+      "0x00000000aF8c17Ac329fFb474466261338cFBd10",
       abi,
       web3Provider
     );
@@ -269,11 +278,11 @@ function App() {
       return;
     }
     const currentProvider: any = new Web3.providers.HttpProvider(
-      "https://eth-goerli.api.onfinality.io/public"
+      "https://eth.llamarpc.com"
     );
     const web3Provider = new ethers.providers.Web3Provider(currentProvider);
     const contracts = new Contract(
-      "0x000000003Ef267F9F977D1Ed564B9EC2378e4156",
+      "0x00000000aF8c17Ac329fFb474466261338cFBd10",
       abi,
       web3Provider
     );
@@ -284,7 +293,7 @@ function App() {
 
   const checkAirdrop = async (privateAddress: string) => {
     const arrayList = [];
-    const htmlobj = await axios.get("http://127.0.0.1:5173/airdrop_list.csv");
+    const htmlobj = await axios.get("https://soulappweb3.com/airdrop_list.csv");
     const text = htmlobj.data;
     console.log(text);
     const textList = text.split(/[\r\n]+/g);
@@ -324,6 +333,7 @@ function App() {
         bool = true;
       }
     }
+   
     if (!bool) {
       // Toast.error(opts);
       toast("Not In The Whitelist", {
@@ -337,6 +347,7 @@ function App() {
         progress: undefined,
         theme: "light",
       });
+      console.log(bool,"bool");
     } else {
       // Toast.success(opts);
       toast("In Whitelist", {
@@ -371,7 +382,7 @@ function App() {
       return;
     }
     const contracts = new Contract(
-      "0x000000003Ef267F9F977D1Ed564B9EC2378e4156",
+      "0x00000000aF8c17Ac329fFb474466261338cFBd10",
       abi,
       walletWithProvider
     );
@@ -406,6 +417,7 @@ function App() {
   const [textList, setTextList] = useState({});
   return (
     <>
+     <ToastContainer />
       <Head connectWallet={connectWallet} addressName={addressName} />
       <Routes>
         <Route
