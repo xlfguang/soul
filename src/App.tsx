@@ -176,7 +176,7 @@ function App() {
         currentObj1.index,
         amount,
         invinteAdr,
-        { value: ethers.utils.parseUnits("0.001", "ether").mul(amount) }
+        { value: ethers.utils.parseUnits("0.01", "ether").mul(amount) }
       );
     } catch (error) {
       console.log(error);
