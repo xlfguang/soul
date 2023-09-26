@@ -14,7 +14,7 @@
     "Circulation": "發行量",
     "Number of MINTs": "MINT數量",
     "Fragment Synthesis Quantity": "碎片合成數量",
-    "Release Time": "發行時間",
+    "Release Time": "結束時間",
     "Blockchain": "所屬區塊鏈",
     "Invitation Notice": "邀請須知",
     "InvitationText": "使用者MINT或邀請其他使用者MINT NFT 都將獲得對應NFT數量的碎片 （碎片總量5000）每五張碎片可以合成一張NFT，合成會產出最低為SR等級的NFT。",

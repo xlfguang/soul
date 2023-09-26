@@ -14,7 +14,7 @@
     "Circulation": "발행량",
     "Number of MINTs": "MINT 수",
     "Fragment Synthesis Quantity": "프래그먼트 합성 수량",
-    "Release Time": "발행 시간",
+    "Release Time": "종료 시간",
     "Blockchain": "소속 블록체인",
     "Invitation Notice": "초대 안내",
     "InvitationText": "사용자가 MINT하거나 다른 사용자를 MINT하면 해당 NFT 수에 해당하는 프래그먼트를 받을 수 있습니다 (프래그먼트 총 5000개). 5장의 프래그먼트로 1개의 NFT를 합성할 수 있으며, 합성에는 최소 SR 레벨의 NFT가 생성됩니다.",

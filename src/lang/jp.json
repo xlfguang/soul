@@ -14,7 +14,7 @@
     "Circulation": "発行量",
     "Number of MINTs": "MINTの数",
     "Fragment Synthesis Quantity": "フラグメント合成数",
-    "Release Time": "発行時間",
+    "Release Time": "終了時間",
     "Blockchain": "所属ブロックチェーン",
     "Invitation Notice": "招待に関する注意",
     "InvitationText": "ユーザーがMINTしたり他のユーザーをMINTしたりすると、対応するNFTの数のフラグメントを受け取ることができます（フラグメントの総数は5000）。5枚のフラグメントで1枚のNFTを合成することができ、合成により最低SRランクのNFTが生成されます。",

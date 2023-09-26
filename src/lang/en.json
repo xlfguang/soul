@@ -14,7 +14,7 @@
     "Circulation": "Circulation",
     "Number of MINTs": "Number of MINTs",
     "Fragment Synthesis Quantity": "Fragment Synthesis Quantity",
-    "Release Time": "Release Time",
+    "Release Time": "End Time",
     "Blockchain": "Blockchain",
     "Invitation Notice": "Invitation Notice",
     "InvitationText": "Inviting other users to mint NFTs will earn you one NFT fragment (total of 5,000 fragments).Every five fragments can be synthesized into one NFT, and the synthesis will produce an NFT with a minimum SR grade.",

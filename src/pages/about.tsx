@@ -94,7 +94,7 @@ function About(props: {
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Release Time")}</div>
-            <div className="right">2023.9.26 14:00(UTC)</div>
+            <div className="right">2023.9.28 14:00(UTC)</div>
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Blockchain")}</div>
