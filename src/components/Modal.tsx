@@ -56,12 +56,13 @@ const Modal: React.FC<ModalProps> = ({
   if (!isOpen) {
     return null;
   }
+  const isPhone = window.innerWidth < 768;
 
   return (
     <ModalOverlay>
       <ModalContent
         style={{
-          width: width ? width : "30%",
+          width: width ? width : isPhone ? "80%" : "30%",
         }}
       >
         <ModalCloseButton onClick={onClose}>×</ModalCloseButton>

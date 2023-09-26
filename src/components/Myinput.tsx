@@ -14,11 +14,19 @@ const InputContainer = styled.div`
   flex-direction: row;
   align-items: center;
   margin: 20px;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    margin: 20px;
+  }
 `;
 
 const InputTitle = styled.h2`
   margin-right: 20px;
   width: 210px;
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 `;
 
 const InputBox = styled.input`

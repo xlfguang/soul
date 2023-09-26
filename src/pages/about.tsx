@@ -50,6 +50,7 @@ function About(props: {
   const [synthesisSliderShow, setSynthesisSliderShow] = useState(false);
   const [mintValue, setMintValue] = useState(0);
   const [synthesisValue, setSynthesisValue] = useState(0);
+  const isPhone = window.innerWidth < 768;
 
   const [transferAddress, setTransferAddress] = useState("");
   const [transferAmount, setTransferAmount] = useState("");
@@ -256,7 +257,8 @@ function About(props: {
         )}
         <MintBtn
           style={{
-            marginTop: "20px",
+            display: "block",
+            margin: "20px auto 0",
           }}
           onClick={() => {
             if (mintSliderShow) {
@@ -270,7 +272,7 @@ function About(props: {
         </MintBtn>
       </Modal>
       <Modal
-        width="60%"
+        width={isPhone ? "90%" : "60%"}
         isOpen={copyShow}
         onClose={function (): void {
           setCopyShow(false);
@@ -303,7 +305,7 @@ function About(props: {
         ></Myinput>
         <MintBtn
           style={{
-            marginLeft: "300px",
+            marginLeft: isPhone ? "0" : "300px",
           }}
           onClick={() => {
             props.transfer(transferAddress, transferAmount);
@@ -322,7 +324,7 @@ function About(props: {
         ></Myinput>
         <MintBtn
           style={{
-            marginLeft: "300px",
+            marginLeft: isPhone ? "0" : "300px",
           }}
           onClick={() => {
             copyToClipboard(invitationLink);
