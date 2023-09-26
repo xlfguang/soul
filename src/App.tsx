@@ -221,7 +221,7 @@ function App() {
     );
 
     try {
-      await contracts.synthesisHandle(amount);
+      await contracts.synthesisHandle(amount,{gasLimit:"1040000"});
     } catch (error) {
       toast("Synthesis Error", {
         position: "top-center",
