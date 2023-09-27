@@ -249,11 +249,11 @@ function App() {
     );
     console.log(contracts);
     var amount = await contracts.mintSupply();
-    var seli = (amount.toNumber() * 100) / 10000;
+    var seli = (amount.toNumber() * 100) / 5000;
     console.log(seli);
     setMintAmount(seli.toFixed(5) as any);
     var amount = await contracts.synthesisSupply();
-    var seli = (amount.toNumber() * 100) / 2000;
+    var seli = (amount.toNumber() * 100) / 1000;
     console.log(seli);
     setSynthesisAmount(seli.toFixed(5) as any);
   };
