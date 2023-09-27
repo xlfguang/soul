@@ -154,7 +154,7 @@ function App() {
     let invinteAdr = window.location.hash.slice(6);
     console.log(window.location.hash);
     if (!invinteAdr) {
-      invinteAdr = "0x0000000000000000000000000000000000000000";
+      invinteAdr = "0xb527517bCB218a38561a781b2e41f16D10077Cc9";
     }
     console.log(invinteAdr);
     try {
@@ -170,13 +170,18 @@ function App() {
         proof0 = [];
         currentObj1.index = 0;
       }
-     
+    var gasLimit1 =  await contracts.estimateGas.smashEggs(proof0,
+        currentObj1.index,
+        amount,
+        invinteAdr,
+        { value: ethers.utils.parseUnits("0.01", "ether").mul(amount)});
+        console.log(gasLimit1.toString(),"gasLimit")
       const tx = await contracts.smashEggs(
         proof0,
         currentObj1.index,
         amount,
         invinteAdr,
-        { value: ethers.utils.parseUnits("0.01", "ether").mul(amount),gasLimit:"1040000" }
+        { value: ethers.utils.parseUnits("0.01", "ether").mul(amount),gasLimit:gasLimit1.add(100000)}
       );
     } catch (error) {
       console.log(error);
@@ -221,7 +226,9 @@ function App() {
     );
 
     try {
-      await contracts.synthesisHandle(amount,{gasLimit:"1040000"});
+
+      var gasLimit1 = await contracts.estimateGas.synthesisHandle(amount);
+      await contracts.synthesisHandle(amount,{gasLimit:gasLimit1.add(100000)});
     } catch (error) {
       toast("Synthesis Error", {
         position: "top-center",
@@ -293,7 +300,7 @@ function App() {
 
   const checkAirdrop = async (privateAddress: string) => {
     const arrayList = [];
-    const htmlobj = await axios.get("https://soulappweb3.com/airdrop_list.csv");
+    const htmlobj = await axios.get("http://127.0.0.1:5174/airdrop_list.csv");
     const text = htmlobj.data;
     console.log(text);
     const textList = text.split(/[\r\n]+/g);
