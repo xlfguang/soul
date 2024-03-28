@@ -1,5 +1,5 @@
 import { PhoneHeadBox } from "@/style/phone";
-import PhoneLogo from "@/assets/images/phoneLogo.png";
+import PhoneLogo from "../../assets/images/phonelogo.png";
 import download from "@/assets/images/dw2.png";
 import Drawer from "../Drawer";
 import { useState } from "react";
