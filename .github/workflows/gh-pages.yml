@@ -32,6 +32,8 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
+      - name: List directory contents
+        run: ls -l ./src/assets/images
 
       - run: yarn
       - run: yarn build
