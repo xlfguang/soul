@@ -5,6 +5,7 @@ on:
     branches:
       - main
   pull_request:
+
 jobs:
   deploy:
     runs-on: ubuntu-20.04
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "16"
+          node-version: "18"
 
       - name: Get yarn cache
         id: yarn-cache
@@ -31,8 +32,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: List directory contents
-        run: ls -l ./src/assets/images
 
       - run: yarn
       - run: yarn build
