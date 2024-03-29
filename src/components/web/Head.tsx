@@ -112,7 +112,7 @@ function Head(props: { connectWallet: () => void; addressName: any }) {
               </div>
             );
           })}
-          {location.pathname === "/NFT" && (
+          {/* {location.pathname === "/NFT" && (
             <div
               className="link"
               onClick={() => {
@@ -121,7 +121,7 @@ function Head(props: { connectWallet: () => void; addressName: any }) {
             >
               {t("whitepaper")}
             </div>
-          )}
+          )} */}
 
           {location.pathname === "/NFT" && (
             <ConnectWallet

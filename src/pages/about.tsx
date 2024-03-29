@@ -94,11 +94,11 @@ function About(props: {
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Release Time")}</div>
-            <div className="right">2023.9.29 14:00(UTC)</div>
+            <div className="right">2024.4.1 13:00UTC</div>
           </CardItem>{" "}
           <CardItem>
             <div className="left">{t("Blockchain")}</div>
-            <div className="right">erc20</div>
+            <div className="right">Solana</div>
           </CardItem>
         </CardBox>
         <CardBox>
@@ -125,7 +125,7 @@ function About(props: {
             <div className="right">{100}</div>
           </CardItem>
         </CardBox>
-        <CardBox>
+        {/* <CardBox>
           <ImageBack>
             {[r1, r2, r3, r4, r5, r6].map((item, i) => {
               return <img key={i} src={item} />;
@@ -144,7 +144,7 @@ function About(props: {
             <div className="left">UR</div>
             <div className="right">{50}</div>
           </CardItem>
-        </CardBox>
+        </CardBox> */}
       </CardListBox>
       <BtnBox>
         <BtnItem>
@@ -188,7 +188,7 @@ function About(props: {
         <CardTitle>{t("mint Notice")}</CardTitle>
         <CardText>{t("mint1")}</CardText>
       </CardBox>
-      <CardBox
+      {/* <CardBox
         style={{
           margin: " 20px auto",
           background: "rgba(0,0,0,0)",
@@ -196,7 +196,7 @@ function About(props: {
       >
         <CardTitle>{t("Invitation Notice")}</CardTitle>
         <CardText>{t("InvitationText")}</CardText>
-      </CardBox>
+      </CardBox> */}
       <CardBox
         style={{
           margin: " 20px auto",
