@@ -19,88 +19,31 @@ function App() {
   const connectWallet = async () => {
     let web3Provider;
     const windowNew = window as any;
-    if (windowNew.ethereum) {
-      web3Provider = windowNew.ethereum;
-      try {
-        await windowNew.ethereum.enable();
-      } catch (error) {
-        console.error("User denied account access");
+    if ('phantom' in windowNew) {
+      const provider = windowNew.phantom?.solana;
+  
+      if (provider?.isPhantom) {
+        web3Provider =  provider;
+      }else{
+        alert("No Phantom");
       }
-    } else if (windowNew.web3) {
-      web3Provider = windowNew.web3.currentProvider;
-    } else {
-      alert("No MetaMask！");
-      web3Provider = new Web3.providers.HttpProvider("http://localhost:8545");
     }
-    const web3 = new Web3(web3Provider);
-    const id = await web3.eth.net.getId();
-    console.log(id);
-    if(id != 1){
-      var rpc = {
-        chainId: "0x1",
-        chainName: "Ethereum Mainnet",
-        nativeCurrency: {
-          name: "ETH",
-          symbol: "ETH",
-          decimals: 18,
-        },
-        rpcUrls: ["https://eth.llamarpc.com"],
-        blockExplorerUrls: ["https://etherscan.io"],
-      };
-      windowNew.ethereum.request({
-        method: 'wallet_addEthereumChain',
-        params: [{
-            chainId: rpc.chainId,
-            chainName: rpc.chainName,
-            rpcUrls: [
-                rpc.rpcUrls[0],
-            ],
-            iconUrls: [
-                'https://testnet.hecoinfo.com/favicon.png'
-            ],
-            blockExplorerUrls: [
-                rpc.blockExplorerUrls[0]
-            ],
-            nativeCurrency: rpc.nativeCurrency
-        }]
-    })
-    }
-    // if (id != 5) {
-    //   const rpc = {
-    //     chainId: "0x5",
-    //     chainName: "Goerli",
-    //     nativeCurrency: {
-    //       name: "ETH",
-    //       symbol: "ETH",
-    //       decimals: 18,
-    //     },
-    //     rpcUrls: ["https://rpc.ankr.com/eth_goerli"],
-    //     blockExplorerUrls: ["https://goerli.etherscan.io"],
-    //   };
-    //   windowNew.ethereum.request({
-    //     method: "wallet_addEthereumChain",
-    //     params: [
-    //       {
-    //         chainId: rpc.chainId,
-    //         chainName: rpc.chainName,
-    //         rpcUrls: [rpc.rpcUrls[0]],
-    //         iconUrls: ["https://testnet.hecoinfo.com/favicon.png"],
-    //         blockExplorerUrls: [rpc.blockExplorerUrls[0]],
-    //         nativeCurrency: rpc.nativeCurrency,
-    //       },
-    //     ],
-    //   });
-    // }
-    const provider = new ethers.providers.Web3Provider(web3Provider);
-    const walletWithProvider: any = provider.getSigner();
+    var resp;
+    try {
+       resp = await web3Provider.connect();
+      console.log(resp.publicKey.toString());
+      // 26qv4GCcx98RihuK3c4T6ozB3J7L6VwCuFVc7Ta2A3Uo 
+  } catch (err) {
+      // { code: 4001, message: 'User rejected the request.' }
+  }
+   
     setWalletWithProvider(walletWithProvider);
 
-    const privateAddress = await walletWithProvider.getAddress();
-    setPrivateAddress(privateAddress);
+    setPrivateAddress(resp.publicKey.toString());
     setAddressName(
-      privateAddress.slice(0, 4) + "......" + privateAddress.slice(-4)
+      resp.publicKey.toString().slice(0, 4) + "......" + resp.publicKey.toString().slice(-4)
     );
-    checkAirdrop(privateAddress);
+    // checkAirdrop(privateAddress);
   };
 
   const mint = async (amount: any) => {
