@@ -74,7 +74,12 @@ function About(props: {
       <BarImg src={barImg} alt="" />
 
       <CardListBox>
-        <CardBox>
+        <CardBox
+          style={{
+            width: "49%",
+            margin: "0%",
+          }}
+        >
           <ImageBack>
             {[ur, sr1, sr2, sr3, sr4, ssr1].map((item, i) => {
               return <img key={i} src={item} />;
@@ -82,16 +87,16 @@ function About(props: {
           </ImageBack>
           <CardItem>
             <div className="left">{t("Circulation")}</div>
-            <div className="right">{6000}</div>
+            <div className="right">{5000}</div>
           </CardItem>
           <CardItem>
             <div className="left">{t("Number of MINTs")}</div>
             <div className="right">{5000}</div>
           </CardItem>{" "}
-          <CardItem>
+          {/* <CardItem>
             <div className="left">{t("Fragment Synthesis Quantity")}</div>
             <div className="right">{1000}</div>
-          </CardItem>{" "}
+          </CardItem>{" "} */}
           <CardItem>
             <div className="left">{t("Release Time")}</div>
             <div className="right">2024.4.1 13:00UTC</div>
@@ -101,7 +106,12 @@ function About(props: {
             <div className="right">Solana</div>
           </CardItem>
         </CardBox>
-        <CardBox>
+        <CardBox
+          style={{
+            width: "49%",
+            margin: "0%",
+          }}
+        >
           <ImageBack>
             {[ssr1, ssr2, r1, r2, r3, r4].map((item, i) => {
               return <img key={i} src={item} />;
@@ -148,7 +158,7 @@ function About(props: {
       </CardListBox>
       <BtnBox>
         <BtnItem>
-          <ProgressBar value={props.mintAmount} maxValue={100}></ProgressBar>
+          <ProgressBar value={0} maxValue={100}></ProgressBar>
           <BtnFlex>
             <MintBtn
               onClick={() => {
@@ -161,7 +171,7 @@ function About(props: {
             </MintBtn>
           </BtnFlex>
         </BtnItem>
-        <BtnItem>
+        {/* <BtnItem>
           <ProgressBar
             value={props.synthesisAmount}
             maxValue={100}
@@ -177,7 +187,7 @@ function About(props: {
               {t("synthesis")}
             </MintBtn>
           </BtnFlex>
-        </BtnItem>
+        </BtnItem> */}
       </BtnBox>
       <CardBox
         style={{
@@ -186,7 +196,13 @@ function About(props: {
         }}
       >
         <CardTitle>{t("mint Notice")}</CardTitle>
-        <CardText>{t("mint1")}</CardText>
+        <CardText>Total amount of tokens: 100,000,000</CardText>
+        <CardText>mint payment method: $Soul</CardText>{" "}
+        <CardText>Notes on mint</CardText>{" "}
+        <CardText>Mint unit price: 10000$Soul</CardText>{" "}
+        <CardText>The maximum single quantity of mint is 10</CardText>
+        <CardText>nft quantity: 5000</CardText>
+        <CardText>The soul tokens obtained by mint will be destroyed.</CardText>
       </CardBox>
       {/* <CardBox
         style={{

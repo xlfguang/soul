@@ -263,6 +263,7 @@ export const CardBox = styled.div`
   position: relative;
   margin: 0 20px;
   overflow: hidden;
+
   @media (max-width: 768px) {
     margin: 20px 0;
   }
@@ -331,7 +332,7 @@ export const BtnBox = styled.div`
   }
 `;
 export const BtnItem = styled.div`
-  width: 40%;
+  width: 50%;
   margin-top: 20px;
   @media (max-width: 768px) {
     width: 100%;
